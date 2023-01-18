@@ -8,9 +8,9 @@ EndProject
 Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "GeometryFriends", "GeometryFriendsGame\Release\GeometryFriends.exe", "{796F83DF-114F-4892-B0B2-60347E2FDAB2}"
 	ProjectSection(DebuggerProjectSystem) = preProject
 		PortSupplier = 00000000-0000-0000-0000-000000000000
-		Executable = C:\Users\Ines Lobo\Downloads\GFAgentStudy\GeometryFriendsGame\Release\GeometryFriends.exe
+		Executable = C:\Users\Ines Lobo\Documents\GitHub\geometry-friends-study\src\GeometryFriendsGame\Release\GeometryFriends.exe
 		RemoteMachine = DESKTOP-42DCIO5
-		StartingDirectory = C:\Users\Ines Lobo\Downloads\GFAgentStudy\GeometryFriendsGame\Release
+		StartingDirectory = C:\Users\Ines Lobo\Documents\GitHub\geometry-friends-study\src\GeometryFriendsGame\Release
 		Arguments = 
 		Environment = Padrão
 		LaunchingEngine = 00000000-0000-0000-0000-000000000000
