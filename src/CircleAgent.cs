@@ -64,8 +64,8 @@ namespace GeometryFriendsAgents
             timerAdaptive = 0;
             timerAdaptiveCollectible = 0;
             currentAction = Moves.NO_ACTION;
-            agentBehaviour = GameInfo.AgentBehaviour.LEADER;
-            agentAdaptive = true;
+            agentBehaviour = GameInfo.AgentBehaviour.FOLLOWER;
+            agentAdaptive = false;
 
             graph = new GraphCircle();
             subgoalAStar = new SubgoalAStar();
