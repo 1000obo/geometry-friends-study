@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryFriendsAgents", "GeometryFriendsAgents.csproj", "{6F45AB29-7874-4B3D-8073-B2D5F0C1A35F}"
 EndProject
-Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "GeometryFriends", "GeometryFriendsGame\Release\GeometryFriends.exe", "{5CCDB623-B4B3-4076-9025-4CDF0971F0BC}"
+Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "GeometryFriends", "GeometryFriendsGame\Release\GeometryFriends.exe", "{796F83DF-114F-4892-B0B2-60347E2FDAB2}"
 	ProjectSection(DebuggerProjectSystem) = preProject
 		PortSupplier = 00000000-0000-0000-0000-000000000000
 		Executable = C:\Users\Ines Lobo\Downloads\GFAgentStudy\GeometryFriendsGame\Release\GeometryFriends.exe
@@ -30,8 +30,8 @@ Global
 		{6F45AB29-7874-4B3D-8073-B2D5F0C1A35F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F45AB29-7874-4B3D-8073-B2D5F0C1A35F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F45AB29-7874-4B3D-8073-B2D5F0C1A35F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5CCDB623-B4B3-4076-9025-4CDF0971F0BC}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{5CCDB623-B4B3-4076-9025-4CDF0971F0BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{796F83DF-114F-4892-B0B2-60347E2FDAB2}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{796F83DF-114F-4892-B0B2-60347E2FDAB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
