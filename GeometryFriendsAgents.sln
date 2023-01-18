@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryFriendsAgents", "GeometryFriendsAgents.csproj", "{6F45AB29-7874-4B3D-8073-B2D5F0C1A35F}"
+EndProject
+Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "GeometryFriends", "GeometryFriendsGame\Release\GeometryFriends.exe", "{5CCDB623-B4B3-4076-9025-4CDF0971F0BC}"
+	ProjectSection(DebuggerProjectSystem) = preProject
+		PortSupplier = 00000000-0000-0000-0000-000000000000
+		Executable = C:\Users\Ines Lobo\Downloads\GFAgentStudy\GeometryFriendsGame\Release\GeometryFriends.exe
+		RemoteMachine = DESKTOP-42DCIO5
+		StartingDirectory = C:\Users\Ines Lobo\Downloads\GFAgentStudy\GeometryFriendsGame\Release
+		Arguments = 
+		Environment = Padrão
+		LaunchingEngine = 00000000-0000-0000-0000-000000000000
+		UseLegacyDebugEngines = No
+		LaunchSQLEngine = No
+		AttachLaunchAction = No
+		IORedirection = Auto
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F45AB29-7874-4B3D-8073-B2D5F0C1A35F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F45AB29-7874-4B3D-8073-B2D5F0C1A35F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F45AB29-7874-4B3D-8073-B2D5F0C1A35F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F45AB29-7874-4B3D-8073-B2D5F0C1A35F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CCDB623-B4B3-4076-9025-4CDF0971F0BC}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{5CCDB623-B4B3-4076-9025-4CDF0971F0BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B6DF62D2-6625-4E0F-BA01-28E381FB6604}
+	EndGlobalSection
+EndGlobal

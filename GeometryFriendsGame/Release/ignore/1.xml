@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Levels>
+  <Level1>
+    <Description />
+    <Tips />
+    <BallStartingPosition X="440" Y="680" />
+    <SquareStartingPosition X="856" Y="408" />
+    <Collectibles>
+      <Collectible X="88" Y="248" />
+      <Collectible X="1176" Y="248" />
+      <Collectible X="648" Y="88" />
+      <Collectible X="1144" Y="456" />
+    </Collectibles>
+    <GreenObstacles>
+      <Obstacle width="784" height="48" X="232" Y="488" centered="false" />
+    </GreenObstacles>
+    <BlackObstacles>
+      <Obstacle width="192" height="448" X="40" Y="312" centered="false" />
+      <Obstacle width="224" height="272" X="1016" Y="488" centered="false" />
+      <Obstacle width="224" height="112" X="1016" Y="312" centered="false" />
+    </BlackObstacles>
+    <YellowObstacles />
+    <GreenElevators />
+    <OrangeElevators />
+    <TimeLimit value="120" />
+    <HighScores>
+      <HighScore name="IST Circle&amp;IST Rectangle" value="34" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="50" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="55" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="61" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="62" />
+    </HighScores>
+  </Level1>
+  <Level2>
+    <Description />
+    <Tips />
+    <BallStartingPosition X="424" Y="696" />
+    <SquareStartingPosition X="632" Y="200" />
+    <Collectibles>
+      <Collectible X="1160" Y="248" />
+      <Collectible X="152" Y="248" />
+      <Collectible X="840" Y="248" />
+      <Collectible X="504" Y="424" />
+    </Collectibles>
+    <GreenObstacles />
+    <BlackObstacles>
+      <Obstacle width="128" height="416" X="568" Y="248" centered="false" />
+      <Obstacle width="176" height="32" X="392" Y="472" centered="false" />
+    </BlackObstacles>
+    <YellowObstacles>
+      <Obstacle width="32" height="128" X="392" Y="344" centered="false" />
+      <Obstacle width="144" height="32" X="424" Y="344" centered="false" />
+    </YellowObstacles>
+    <GreenElevators />
+    <OrangeElevators />
+    <TimeLimit value="120" />
+    <HighScores>
+      <HighScore name="IST Circle&amp;IST Rectangle" value="69" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="74" />
+    </HighScores>
+  </Level2>
+  <Level3>
+    <Description />
+    <Tips />
+    <BallStartingPosition X="296" Y="200" />
+    <SquareStartingPosition X="440" Y="392" />
+    <Collectibles>
+      <Collectible X="1160" Y="104" />
+      <Collectible X="664" Y="104" />
+      <Collectible X="920" Y="104" />
+      <Collectible X="88" Y="360" />
+    </Collectibles>
+    <GreenObstacles>
+      <Obstacle width="896" height="48" X="344" Y="492" centered="false" />
+    </GreenObstacles>
+    <BlackObstacles>
+      <Obstacle width="304" height="48" X="40" Y="248" centered="false" />
+      <Obstacle width="304" height="48" X="40" Y="492" centered="false" />
+      <Obstacle width="48" height="224" X="456" Y="24" centered="false" />
+    </BlackObstacles>
+    <YellowObstacles />
+    <GreenElevators />
+    <OrangeElevators />
+    <TimeLimit value="120" />
+    <HighScores>
+      <HighScore name="IST Circle&amp;IST Rectangle" value="48" />
+    </HighScores>
+  </Level3>
+  <Level4>
+    <Description />
+    <Tips />
+    <BallStartingPosition X="760" Y="696" />
+    <SquareStartingPosition X="520" Y="680" />
+    <Collectibles>
+      <Collectible X="1144" Y="248" />
+      <Collectible X="344" Y="248" />
+      <Collectible X="744" Y="248" />
+      <Collectible X="120" Y="632" />
+    </Collectibles>
+    <GreenObstacles />
+    <BlackObstacles>
+      <Obstacle width="156" height="304" X="232" Y="392" centered="false" />
+      <Obstacle width="192" height="48" X="40" Y="392" centered="false" />
+      <Obstacle width="208" height="368" X="1048" Y="392" centered="false" />
+    </BlackObstacles>
+    <YellowObstacles>
+      <Obstacle width="156" height="64" X="232" Y="696" centered="false" />
+    </YellowObstacles>
+    <GreenElevators />
+    <OrangeElevators />
+    <TimeLimit value="120" />
+    <HighScores>
+      <HighScore name="IST Circle&amp;IST Rectangle" value="43" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="64" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="74" />
+    </HighScores>
+  </Level4>
+  <Level5>
+    <Description />
+    <Tips />
+    <BallStartingPosition X="168" Y="696" />
+    <SquareStartingPosition X="888" Y="424" />
+    <Collectibles>
+      <Collectible X="198" Y="120" />
+      <Collectible X="998" Y="120" />
+      <Collectible X="630" Y="120" />
+      <Collectible X="1192" Y="312" />
+    </Collectibles>
+    <GreenObstacles>
+      <Obstacle width="1232" height="48" X="24" Y="504" centered="false" />
+    </GreenObstacles>
+    <BlackObstacles />
+    <YellowObstacles>
+      <Obstacle width="48" height="464" X="1112" Y="40" centered="false" />
+    </YellowObstacles>
+    <GreenElevators />
+    <OrangeElevators />
+    <TimeLimit value="120" />
+    <HighScores>
+      <HighScore name="IST Circle&amp;IST Rectangle" value="39" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="39" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="40" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="40" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="41" />
+    </HighScores>
+  </Level5>
+  <Level6>
+    <Description />
+    <Tips />
+    <BallStartingPosition X="440" Y="680" />
+    <SquareStartingPosition X="824" Y="664" />
+    <Collectibles>
+      <Collectible X="88" Y="296" />
+      <Collectible X="1176" Y="296" />
+      <Collectible X="648" Y="280" />
+      <Collectible X="1192" Y="728" />
+    </Collectibles>
+    <GreenObstacles />
+    <BlackObstacles>
+      <Obstacle width="176" height="350" X="40" Y="410" centered="false" />
+      <Obstacle width="48" height="336" X="504" Y="24" centered="false" />
+      <Obstacle width="48" height="320" X="744" Y="40" centered="false" />
+      <Obstacle width="176" height="288" X="1064" Y="408" centered="false" />
+    </BlackObstacles>
+    <YellowObstacles />
+    <GreenElevators />
+    <OrangeElevators />
+    <TimeLimit value="120" />
+    <HighScores>
+      <HighScore name="IST Circle&amp;IST Rectangle" value="38" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="42" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="45" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="47" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="48" />
+    </HighScores>
+  </Level6>
+  <Level7>
+    <Description />
+    <Tips />
+    <BallStartingPosition X="440" Y="696" />
+    <SquareStartingPosition X="872" Y="648" />
+    <Collectibles>
+      <Collectible X="168" Y="296" />
+      <Collectible X="712" Y="296" />
+      <Collectible X="456" Y="296" />
+      <Collectible X="1192" Y="632" />
+    </Collectibles>
+    <GreenObstacles />
+    <BlackObstacles>
+      <Obstacle width="144" height="176" X="936" Y="520" centered="false" />
+    </BlackObstacles>
+    <YellowObstacles>
+      <Obstacle width="32" height="176" X="1080" Y="520" centered="false" />
+      <Obstacle width="128" height="32" X="1112" Y="520" centered="false" />
+    </YellowObstacles>
+    <GreenElevators />
+    <OrangeElevators />
+    <TimeLimit value="120" />
+    <HighScores>
+      <HighScore name="IST Circle&amp;IST Rectangle" value="39" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="51" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="54" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="55" />
+    </HighScores>
+  </Level7>
+  <Level8>
+    <Description />
+    <Tips />
+    <BallStartingPosition X="680" Y="696" />
+    <SquareStartingPosition X="664" Y="132" />
+    <Collectibles>
+      <Collectible X="1128" Y="248" />
+      <Collectible X="328" Y="264" />
+      <Collectible X="840" Y="264" />
+      <Collectible X="88" Y="264" />
+    </Collectibles>
+    <GreenObstacles>
+      <Obstacle width="96" height="32" X="280" Y="312" centered="false" />
+      <Obstacle width="32" height="112" X="248" Y="232" centered="false" />
+      <Obstacle width="32" height="112" X="376" Y="232" centered="false" />
+    </GreenObstacles>
+    <BlackObstacles>
+      <Obstacle width="396" height="368" X="40" Y="408" centered="false" />
+      <Obstacle width="736" height="48" X="248" Y="184" centered="false" />
+    </BlackObstacles>
+    <YellowObstacles>
+      <Obstacle width="32" height="128" X="136" Y="216" centered="false" />
+      <Obstacle width="96" height="32" X="40" Y="312" centered="false" />
+      <Obstacle width="128" height="32" X="40" Y="184" centered="false" />
+    </YellowObstacles>
+    <GreenElevators />
+    <OrangeElevators />
+    <TimeLimit value="120" />
+    <HighScores>
+      <HighScore name="IST Circle&amp;IST Rectangle" value="58" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="65" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="65" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="93" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="172" />
+    </HighScores>
+  </Level8>
+  <Level9>
+    <Description />
+    <Tips />
+    <BallStartingPosition X="392" Y="664" />
+    <SquareStartingPosition X="920" Y="408" />
+    <Collectibles>
+      <Collectible X="216" Y="152" />
+      <Collectible X="904" Y="152" />
+      <Collectible X="600" Y="152" />
+      <Collectible X="1176" Y="360" />
+    </Collectibles>
+    <GreenObstacles>
+      <Obstacle width="1200" height="48" X="40" Y="504" centered="false" />
+    </GreenObstacles>
+    <BlackObstacles />
+    <YellowObstacles>
+      <Obstacle width="208" height="48" X="1032" Y="456" centered="false" />
+      <Obstacle width="64" height="416" X="1032" Y="40" centered="false" />
+      <Obstacle width="64" height="464" X="728" Y="40" centered="false" />
+      <Obstacle width="64" height="464" X="408" Y="40" centered="false" />
+    </YellowObstacles>
+    <GreenElevators />
+    <OrangeElevators />
+    <TimeLimit value="120" />
+    <HighScores>
+      <HighScore name="IST Circle&amp;IST Rectangle" value="58" />
+    </HighScores>
+  </Level9>
+  <Level10>
+    <Description />
+    <Tips />
+    <BallStartingPosition X="1000" Y="152" />
+    <SquareStartingPosition X="1160" Y="152" />
+    <Collectibles>
+      <Collectible X="1160" Y="296" />
+      <Collectible X="520" Y="296" />
+      <Collectible X="872" Y="296" />
+      <Collectible X="104" Y="296" />
+    </Collectibles>
+    <GreenObstacles>
+      <Obstacle width="240" height="48" X="184" Y="200" centered="false" />
+    </GreenObstacles>
+    <BlackObstacles>
+      <Obstacle width="816" height="48" X="424" Y="200" centered="false" />
+    </BlackObstacles>
+    <YellowObstacles>
+      <Obstacle width="144" height="48" X="40" Y="200" centered="false" />
+      <Obstacle width="144" height="48" X="40" Y="344" centered="false" />
+      <Obstacle width="48" height="144" X="184" Y="248" centered="false" />
+    </YellowObstacles>
+    <GreenElevators />
+    <OrangeElevators />
+    <TimeLimit value="120" />
+  </Level10>
+  <Level11>
+    <Description />
+    <Tips />
+    <BallStartingPosition X="776" Y="664" />
+    <SquareStartingPosition X="136" Y="104" />
+    <Collectibles>
+      <Collectible X="120" Y="296" />
+      <Collectible X="1192" Y="216" />
+      <Collectible X="360" Y="296" />
+      <Collectible X="552" Y="248" />
+    </Collectibles>
+    <GreenObstacles />
+    <BlackObstacles>
+      <Obstacle width="464" height="48" X="40" Y="168" centered="false" />
+      <Obstacle width="48" height="240" X="456" Y="216" centered="false" />
+      <Obstacle width="336" height="368" X="904" Y="392" centered="false" />
+    </BlackObstacles>
+    <YellowObstacles>
+      <Obstacle width="128" height="32" X="504" Y="168" centered="false" />
+      <Obstacle width="32" height="96" X="600" Y="200" centered="false" />
+      <Obstacle width="128" height="32" X="504" Y="296" centered="false" />
+    </YellowObstacles>
+    <GreenElevators />
+    <OrangeElevators />
+    <TimeLimit value="120" />
+    <HighScores>
+      <HighScore name="IST Circle&amp;IST Rectangle" value="68" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="69" />
+    </HighScores>
+  </Level11>
+  <Level12>
+    <Description />
+    <Tips />
+    <BallStartingPosition X="504" Y="680" />
+    <SquareStartingPosition X="200" Y="536" />
+    <Collectibles>
+      <Collectible X="1144" Y="296" />
+      <Collectible X="136" Y="280" />
+      <Collectible X="840" Y="296" />
+      <Collectible X="88" Y="504" />
+    </Collectibles>
+    <GreenObstacles />
+    <BlackObstacles>
+      <Obstacle width="256" height="160" X="40" Y="600" centered="false" />
+      <Obstacle width="64" height="320" X="472" Y="40" centered="false" />
+    </BlackObstacles>
+    <YellowObstacles>
+      <Obstacle width="48" height="192" X="248" Y="408" centered="false" />
+      <Obstacle width="256" height="32" X="40" Y="376" centered="false" />
+    </YellowObstacles>
+    <GreenElevators />
+    <OrangeElevators />
+    <TimeLimit value="120" />
+    <HighScores>
+      <HighScore name="IST Circle&amp;IST Rectangle" value="52" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="62" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="65" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="80" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="87" />
+    </HighScores>
+  </Level12>
+  <Level13>
+    <Description />
+    <Tips />
+    <BallStartingPosition X="344" Y="680" />
+    <SquareStartingPosition X="552" Y="104" />
+    <Collectibles>
+      <Collectible X="1080" Y="280" />
+      <Collectible X="120" Y="280" />
+      <Collectible X="712" Y="280" />
+      <Collectible X="344" Y="312" />
+    </Collectibles>
+    <GreenObstacles />
+    <BlackObstacles>
+      <Obstacle width="64" height="336" X="392" Y="168" centered="false" />
+      <Obstacle width="464" height="64" X="456" Y="168" centered="false" />
+      <Obstacle width="256" height="64" X="40" Y="168" centered="false" />
+      <Obstacle width="48" height="272" X="248" Y="232" centered="false" />
+    </BlackObstacles>
+    <YellowObstacles>
+      <Obstacle width="96" height="64" X="296" Y="440" centered="false" />
+    </YellowObstacles>
+    <GreenElevators />
+    <OrangeElevators />
+    <TimeLimit value="120" />
+    <HighScores>
+      <HighScore name="IST Circle&amp;IST Rectangle" value="47" />
+    </HighScores>
+  </Level13>
+  <Level14>
+    <Description />
+    <Tips />
+    <BallStartingPosition X="88" Y="152" />
+    <SquareStartingPosition X="1016" Y="152" />
+    <Collectibles>
+      <Collectible X="88" Y="296" />
+      <Collectible X="1160" Y="312" />
+      <Collectible X="648" Y="296" />
+      <Collectible X="1160" Y="168" />
+    </Collectibles>
+    <GreenObstacles />
+    <BlackObstacles>
+      <Obstacle width="176" height="48" X="40" Y="200" centered="false" />
+      <Obstacle width="272" height="48" X="968" Y="216" centered="false" />
+    </BlackObstacles>
+    <YellowObstacles />
+    <GreenElevators />
+    <OrangeElevators />
+    <TimeLimit value="120" />
+    <HighScores>
+      <HighScore name="IST Circle&amp;IST Rectangle" value="39" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="44" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="51" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="60" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="64" />
+    </HighScores>
+  </Level14>
+  <Level15>
+    <Description />
+    <Tips />
+    <BallStartingPosition X="648" Y="696" />
+    <SquareStartingPosition X="584" Y="120" />
+    <Collectibles>
+      <Collectible X="1048" Y="296" />
+      <Collectible X="424" Y="296" />
+      <Collectible X="744" Y="296" />
+      <Collectible X="104" Y="312" />
+    </Collectibles>
+    <GreenObstacles>
+      <Obstacle width="32" height="112" X="328" Y="248" centered="false" />
+      <Obstacle width="32" height="112" X="488" Y="248" centered="false" />
+      <Obstacle width="32" height="112" X="648" Y="248" centered="false" />
+      <Obstacle width="32" height="112" X="808" Y="248" centered="false" />
+      <Obstacle width="32" height="112" X="936" Y="248" centered="false" />
+      <Obstacle width="32" height="112" X="1112" Y="248" centered="false" />
+      <Obstacle width="192" height="32" X="328" Y="344" centered="false" />
+      <Obstacle width="192" height="32" X="648" Y="344" centered="false" />
+      <Obstacle width="208" height="32" X="936" Y="344" centered="false" />
+      <Obstacle width="192" height="32" X="328" Y="216" centered="false" />
+      <Obstacle width="192" height="32" X="648" Y="216" centered="false" />
+      <Obstacle width="208" height="32" X="936" Y="216" centered="false" />
+    </GreenObstacles>
+    <BlackObstacles>
+      <Obstacle width="176" height="32" X="152" Y="216" centered="false" />
+      <Obstacle width="128" height="32" X="520" Y="216" centered="false" />
+      <Obstacle width="96" height="32" X="840" Y="216" centered="false" />
+      <Obstacle width="96" height="32" X="1144" Y="216" centered="false" />
+      <Obstacle width="48" height="432" X="152" Y="232" centered="false" />
+    </BlackObstacles>
+    <YellowObstacles />
+    <GreenElevators />
+    <OrangeElevators />
+    <TimeLimit value="120" />
+    <HighScores>
+      <HighScore name="IST Circle&amp;IST Rectangle" value="38" />
+    </HighScores>
+  </Level15>
+</Levels>

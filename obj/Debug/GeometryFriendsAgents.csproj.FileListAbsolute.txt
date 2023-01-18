@@ -1,0 +1,6 @@
+C:\Users\Ines Lobo\Downloads\MARLAgent2019\obj\Debug\GeometryFriendsAgents.csproj.CoreCompileInputs.cache
+C:\Users\Ines Lobo\Downloads\MARLAgent2019\obj\Debug\GeometryFriendsAgents.csproj.AssemblyReference.cache
+C:\Users\Ines Lobo\Downloads\MARLAgent2019\GeometryFriendsGame\Release\Agents\WIP.dll
+C:\Users\Ines Lobo\Downloads\MARLAgent2019\GeometryFriendsGame\Release\Agents\WIP.pdb
+C:\Users\Ines Lobo\Downloads\MARLAgent2019\obj\Debug\WIP.dll
+C:\Users\Ines Lobo\Downloads\MARLAgent2019\obj\Debug\WIP.pdb
