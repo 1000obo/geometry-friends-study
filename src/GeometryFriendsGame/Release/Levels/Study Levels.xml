@@ -83,11 +83,11 @@
     <OrangeElevators />
     <TimeLimit value="120" />
     <HighScores>
+      <HighScore name="IST Circle&amp;IST Rectangle" value="25" />
       <HighScore name="IST Circle&amp;IST Rectangle" value="34" />
       <HighScore name="IST Circle&amp;IST Rectangle" value="37" />
       <HighScore name="IST Circle&amp;IST Rectangle" value="40" />
       <HighScore name="IST Circle&amp;IST Rectangle" value="42" />
-      <HighScore name="IST Circle&amp;IST Rectangle" value="43" />
     </HighScores>
   </Level3>
   <Level4>
@@ -117,8 +117,8 @@
       <HighScore name="IST Circle&amp;IST Rectangle" value="43" />
       <HighScore name="IST Circle&amp;IST Rectangle" value="53" />
       <HighScore name="IST Circle&amp;IST Rectangle" value="54" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="57" />
       <HighScore name="IST Circle&amp;IST Rectangle" value="60" />
-      <HighScore name="IST Circle&amp;IST Rectangle" value="62" />
     </HighScores>
   </Level4>
   <Level5>
@@ -145,11 +145,11 @@
     <OrangeElevators />
     <TimeLimit value="120" />
     <HighScores>
+      <HighScore name="IST Circle&amp;IST Rectangle" value="26" />
       <HighScore name="IST Circle&amp;IST Rectangle" value="34" />
       <HighScore name="IST Circle&amp;IST Rectangle" value="39" />
       <HighScore name="IST Circle&amp;IST Rectangle" value="39" />
       <HighScore name="IST Circle&amp;IST Rectangle" value="39" />
-      <HighScore name="IST Circle&amp;IST Rectangle" value="47" />
     </HighScores>
   </Level5>
   <Level6>
@@ -183,6 +183,7 @@
     <HighScores>
       <HighScore name="IST Circle&amp;IST Rectangle" value="51" />
       <HighScore name="IST Circle&amp;IST Rectangle" value="74" />
+      <HighScore name="IST Circle&amp;IST Rectangle" value="78" />
       <HighScore name="IST Circle&amp;IST Rectangle" value="88" />
       <HighScore name="IST Circle&amp;IST Rectangle" value="93" />
     </HighScores>

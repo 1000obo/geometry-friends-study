@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Drawing;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 
 using GeometryFriends.AI;
 using GeometryFriends.AI.Interfaces;
-using GeometryFriends.AI.Communication;
 using GeometryFriends.AI.Perceptions.Information;
 
 namespace GeometryFriendsAgents
@@ -35,12 +33,11 @@ namespace GeometryFriendsAgents
         private bool agentAdaptive;
 
         //Logs and Screen Capture
-        private List<AgentMessage> messages;
         private Logger logger;
         private GameInfo.CooperationStatus cooperationStatus;
         private String collectiblesLeft = "";
         private ScreenRecorder recorder;
-        private bool startRecording = true;       
+        private bool startRecording = true;
 
         // Auxiliary Variables
         private Moves currentAction;
@@ -49,7 +46,6 @@ namespace GeometryFriendsAgents
         float prevHeight;
         private Graph.Move? nextMove;
         private DateTime lastMoveTime;
-        private int targetPointX_InAir;
         private Graph.Platform? previousPlatform, currentPlatform;
         private int leftBound;
         private int rightBound;
@@ -71,27 +67,25 @@ namespace GeometryFriendsAgents
             lastMoveTime = DateTime.Now;
             timerAdaptive = 0;
             timerAdaptiveCollectible = 0;
+
             currentAction = Moves.NO_ACTION;
             currentActionRect = Moves.NO_ACTION;
             cooperationStatus = GameInfo.CooperationStatus.NOT_COOPERATING;
-            agentBehaviour = GameInfo.AgentBehaviour.FOLLOWER;
-            agentAdaptive = false;
+            agentBehaviour = GameInfo.AgentBehaviour.FOLLOWER; //CHANGE HERE: FOLLOWER OR LEADER
+            agentAdaptive = false; //CHANGE HERE: ADAPTIVE CAN BE TRUE OR FALSE
 
             graph = new GraphCircle();
             subgoalAStar = new SubgoalAStar();
             actionSelector = new ActionSelector();
             levelInfo = new LevelRepresentation();
 
-            messages = new List<AgentMessage>();
-
+            logger = new Logger();
+            recorder = new ScreenRecorder();
         }
 
         //implements abstract circle interface: used to setup the initial information so that the agent has basic knowledge about the level
         public override void Setup(CountInformation nI, RectangleRepresentation rI, CircleRepresentation cI, ObstacleRepresentation[] oI, ObstacleRepresentation[] rPI, ObstacleRepresentation[] cPI, CollectibleRepresentation[] colI, Rectangle area, double timeLimit)
         {
-            logger = new Logger();
-            recorder = new ScreenRecorder();
-
             // Create Level Array
             levelInfo.CreateLevelArray(colI, oI, rPI, cPI);
 
@@ -110,30 +104,17 @@ namespace GeometryFriendsAgents
             rectangleInfo = rI;
             prevRectX = rectangleInfo.X;
             prevHeight = rectangleInfo.Height;
-            targetPointX_InAir = (int)circleInfo.X;
             previousCollectiblesLen = levelInfo.collectibles.Length;
 
+            //Logger first line
             LogsCollectibles();
-
             logger.Log("Setup", agentBehaviour.ToString(), cooperationStatus.ToString(), currentAction.ToString(), currentActionRect.ToString(), cI.X, cI.Y, rI.X, rI.Y, collectiblesLeft);
 
             // Set level bounds
             ComputeLevelBounds();
         }
 
-        private void LogsCollectibles()
-        {
-            collectiblesLeft = "[";
-            bool collectibleFirst = true;
-            foreach (CollectibleRepresentation c in levelInfo.collectibles)
-            {
-                string extra = collectibleFirst ? "" : ", ";
-                collectiblesLeft += extra + "(" + c.X + ", " + c.Y + ")";
-                collectibleFirst = false;
-            }
-            collectiblesLeft += "]";
-        }
-
+        
         //implements abstract circle interface: registers updates from the agent's sensors that it is up to date with the latest environment information
         /*WARNING: this method is called independently from the agent update - Update(TimeSpan elapsedGameTime) - so care should be taken when using complex 
          * structures that are modified in both (e.g. see operation on the "remaining" collection)      
@@ -253,14 +234,15 @@ namespace GeometryFriendsAgents
                                 currentAction = Moves.JUMP;
                             }
 
-                            //Increment timer close to move point - adaptive behaviour
-                            if (Math.Abs(circleInfo.X - movePointX) < GameInfo.MIN_DIST_RECTANGLEX)
+                            //Increment timer close to move point - adaptive behaviour                          
+                            if (increment)
                             {
-                                if (increment)
+                                if (Math.Abs(circleInfo.X - movePointX) < GameInfo.MIN_DIST_RECTANGLEX)
                                 {
                                     timerAdaptive += 1;
                                 }
                             }
+                            
 
                         }
                         else // cirle is positioned higher than the target collectible - normal behaviour
@@ -289,30 +271,22 @@ namespace GeometryFriendsAgents
                         }
                         
 
-                        //if (-GameInfo.MAX_VELOCITYY <= circleInfo.VelocityY && circleInfo.VelocityY <= GameInfo.MAX_VELOCITYY)
-                        //{
-                            movePointX = (int)levelInfo.initialCollectibles[collectibleToGet].X; //no collectible in step: circle moves under to target collectible
-                            int velocityX = 0;
-                            bool rightMove = nextMove.Value.rightMove;
-                            if (flagStepCollectible == 1)
-                            {
-                                movePointX = (int)rectangleInfo.X; //collectible in step: circle moves to center of rectangle
-                                velocityX = GameInfo.JUMP_VELOCITYX;
-                                rightMove = rectangleInfo.X < levelInfo.initialCollectibles[collectibleToGet].X; //move left or right depending on where target collectible is located
-                            }
-                            currentAction = actionSelector.GetCurrentAction(circleInfo, movePointX, velocityX, rightMove);
-                            if (!actionSelector.IsGoal(circleInfo, movePointX, velocityX, rightMove))
-                            {
-                                return;
-                            }
-                            else { currentAction = Moves.JUMP; }
-                        //}
-                        //else
-                        //{
-                          //  currentAction = actionSelector.GetCurrentAction(circleInfo, (int)rectangleInfo.X, 0, true);
-                        //}
-
-
+                        movePointX = (int)levelInfo.initialCollectibles[collectibleToGet].X; //no collectible in step: circle moves under of target collectible
+                        int velocityX = 0;
+                        bool rightMove = nextMove.Value.rightMove;
+                        if (flagStepCollectible == 1)
+                        {
+                            movePointX = (int)rectangleInfo.X; //collectible in step: circle moves to center of rectangle
+                            velocityX = GameInfo.JUMP_VELOCITYX;
+                            rightMove = rectangleInfo.X < levelInfo.initialCollectibles[collectibleToGet].X; //move left or right depending on where target collectible is located
+                        }
+                        currentAction = actionSelector.GetCurrentAction(circleInfo, movePointX, velocityX, rightMove);
+                        if (!actionSelector.IsGoal(circleInfo, movePointX, velocityX, rightMove))
+                        {
+                            return;
+                        }
+                        else { currentAction = Moves.JUMP; }
+                     
                     }
                 }
                 else //default
@@ -370,8 +344,8 @@ namespace GeometryFriendsAgents
                         }                
                         return;
                     }
-                    //circle should wait for rectangle to "stop" or be in a path where its possible to get collectibles before moving - this works like a signal to move
-                    if ((rectangleInfo.Y > levelInfo.initialCollectibles[collectibleToGet].Y)) 
+                    //circle should wait for rectangle to be in a path where its possible to get collectibles before moving 
+                    if (rectangleInfo.Y > levelInfo.initialCollectibles[collectibleToGet].Y) 
                     {
                         if (circleInfo.Y <= levelInfo.initialCollectibles[collectibleToGet].Y || (!cooperating && rectangleInfo.Y > circleInfo.Y && rectangleInfo.Y - (rectangleInfo.Height / 2) - GameInfo.CIRCLE_RADIUS >= circleInfo.Y))
                         {//circle is on top of target collectible; or is not riding rectangle and is higher than the rectangle more than a certain threshold - usual actions
@@ -423,41 +397,40 @@ namespace GeometryFriendsAgents
 
                                 timerAdaptiveCollectible = 0; //restart adaptive collectible timer here!
 
-                                //if (-GameInfo.MAX_VELOCITYY <= circleInfo.VelocityY && circleInfo.VelocityY <= GameInfo.MAX_VELOCITYY)
-                                //{
-                                    int movePointX = (int)levelInfo.initialCollectibles[collectibleToGet].X; //no collectible in step: circle moves under to target collectible
-                                    int velocityX = 0;
-                                    bool rightMove = nextMove.Value.rightMove;
-                                    if (flagStepCollectible == 1)
-                                    {
-                                        movePointX = (int) rectangleInfo.X; //collectible in step: circle moves to center of rectangle
-                                        velocityX = GameInfo.JUMP_VELOCITYX;
-                                        rightMove = rectangleInfo.X < levelInfo.initialCollectibles[collectibleToGet].X; //move left or right depending on where target collectible is located
-                                    }
-                                    currentAction = actionSelector.GetCurrentAction(circleInfo, movePointX, velocityX, rightMove);
-                                    if (!actionSelector.IsGoal(circleInfo, movePointX, velocityX, rightMove))
-                                    {
-                                        return;
-                                    }
-                                    else { currentAction = Moves.JUMP; }                                 
-                               // }
-                                //else
-                                //{
-                                  //  currentAction = actionSelector.GetCurrentAction(circleInfo, (int)rectangleInfo.X, 0, true);
-                                //}
+                                int movePointX = (int)levelInfo.initialCollectibles[collectibleToGet].X; //no collectible in step: circle moves under to target collectible
+                                int velocityX = 0;
+                                bool rightMove = nextMove.Value.rightMove;
+                                if (flagStepCollectible == 1)
+                                {
+                                    movePointX = (int) rectangleInfo.X; //collectible in step: circle moves to center of rectangle
+                                    velocityX = GameInfo.JUMP_VELOCITYX;
+                                    rightMove = rectangleInfo.X < levelInfo.initialCollectibles[collectibleToGet].X; //move left or right depending on where target collectible is located
+                                }
+                                currentAction = actionSelector.GetCurrentAction(circleInfo, movePointX, velocityX, rightMove);
+                                if (!actionSelector.IsGoal(circleInfo, movePointX, velocityX, rightMove))
+                                {
+                                    return;
+                                }
+                                else { currentAction = Moves.JUMP; }                                                               
                             }
                             else //circle should stay at the center of the rectangle waiting to get to the desired collectible
                             {
                                 currentAction = actionSelector.GetCurrentAction(circleInfo, (int)rectangleInfo.X, 0, true);
-                                
-                                timerAdaptiveCollectible += 1; //increment this adaptive collectible timer when rectangle is not moving + is not close to target
+
+                                if (Math.Abs(rectangleInfo.VelocityX) <= GameInfo.MIN_VELOCITYX)
+                                {
+                                    timerAdaptiveCollectible += 1; //increment this adaptive collectible timer when rectangle is not moving + is not close to target
+                                }
 
                             }
                         }
                     }
-                    else //if signal for circle to move is not triggered
+                    else //if circle and rectangle are not on the same path
                     {
-                        timerAdaptiveCollectible = 0; //restart adaptive collectible timer here!
+                        if (Math.Abs(rectangleInfo.VelocityX) > GameInfo.MIN_VELOCITYX)
+                        {
+                            timerAdaptiveCollectible = 0; //restart adaptive collectible timer here!
+                        }
 
                         if (!cooperating) //no action when its not cooperating
                         {
@@ -472,7 +445,6 @@ namespace GeometryFriendsAgents
                                 {
                                     currentAction = actionSelector.GetCurrentAction(circleInfo, nextMove.Value.movePoint.x, nextMove.Value.velocityX, nextMove.Value.rightMove);
                                 }
-
                             }
                         }
                         else //stay in the middle of the rectangle if riding rectangle
@@ -542,7 +514,6 @@ namespace GeometryFriendsAgents
 
             if ((DateTime.Now - lastMoveTime).TotalMilliseconds >= 20)
             {
-
                 if (!agentAdaptive)
                 {
                     if (agentBehaviour == GameInfo.AgentBehaviour.LEADER)
@@ -559,32 +530,8 @@ namespace GeometryFriendsAgents
                     Adaptive();
                 }
 
-                if (currentPlatform.HasValue)
-                {
-                    if (startRecording && !circleInfo.GamePaused && levelInfo.collectibles.Length != 0)
-                    {
-                        startRecording = false;
-                        recorder.Start();
-                    }
-
-                    else
-                    {
-                        if (levelInfo.collectibles.Length > 0 && !circleInfo.GamePaused)
-                        {
-                            ActionRectangle();
-                        }
-                        else
-                        {
-                            recorder.StopThread();
-                            startRecording = true;
-                        }
-                        
-                        logger.Log("Playing", agentBehaviour.ToString(), cooperationStatus.ToString(), currentAction.ToString(), currentActionRect.ToString(), circleInfo.X, circleInfo.Y, rectangleInfo.X, rectangleInfo.Y, collectiblesLeft);
-
-                    }
-                }
-
-
+                RecordVideosLogs();
+                
                 lastMoveTime = DateTime.Now;
 
                 return;
@@ -592,6 +539,36 @@ namespace GeometryFriendsAgents
 
         }
 
+        //Logs + Videos - Main function
+        private void RecordVideosLogs()
+        {
+            if (currentPlatform.HasValue)
+            {
+                if (startRecording && !circleInfo.GamePaused && levelInfo.collectibles.Length != 0)
+                {
+                    startRecording = false;
+                    recorder.Start();
+
+                }
+
+                else
+                {
+                    if (levelInfo.collectibles.Length > 0 && !circleInfo.GamePaused)
+                    {
+                        ActionRectangle();
+                    }
+                    else
+                    {
+                        recorder.StopThread();
+                        startRecording = true;
+                    }
+
+                    logger.Log("Playing", agentBehaviour.ToString(), cooperationStatus.ToString(), currentAction.ToString(), currentActionRect.ToString(), circleInfo.X, circleInfo.Y, rectangleInfo.X, rectangleInfo.Y, collectiblesLeft);
+                }
+            }
+        }
+
+        //Logs - Rectangle Action
         private void ActionRectangle()
         {
             currentActionRect = Moves.NO_ACTION;
@@ -618,7 +595,20 @@ namespace GeometryFriendsAgents
             }
             prevRectX = currRectX;
             prevHeight = currHeight;
+        }
 
+        //Logs - Collectibles List
+        private void LogsCollectibles()
+        {
+            collectiblesLeft = "[";
+            bool collectibleFirst = true;
+            foreach (CollectibleRepresentation c in levelInfo.collectibles)
+            {
+                string extra = collectibleFirst ? "" : ", ";
+                collectiblesLeft += extra + "(" + c.X + ", " + c.Y + ")";
+                collectibleFirst = false;
+            }
+            collectiblesLeft += "]";
         }
 
         private bool IsGetCollectible() //Check if caught collectible
@@ -788,20 +778,6 @@ namespace GeometryFriendsAgents
                  levelInfo.GetObtainedCollectibles(collectibleToGet), levelInfo.initialCollectibles);
         }
 
-       
-        public override List<GeometryFriends.AI.Communication.AgentMessage> GetAgentMessages()
-        {
-            List<AgentMessage> toSent = new List<AgentMessage>(messages);
-            messages.Clear();
-            return toSent;
-        }
-
-        //implememts abstract agent interface: receives messages from the circle agent
-        public override void HandleAgentMessages(List<GeometryFriends.AI.Communication.AgentMessage> newMessages)
-        {        
-            return;
-        }
-
         public static bool IsObstacle_onPixels(int[,] levelArray, List<LevelRepresentation.ArrayPoint> checkPixels)
         {
             if (checkPixels.Count == 0)
@@ -955,6 +931,7 @@ namespace GeometryFriendsAgents
 
             }        
         }
+
     }
 }
 
