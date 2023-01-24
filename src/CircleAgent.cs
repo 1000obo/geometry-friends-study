@@ -8,6 +8,8 @@ using GeometryFriends.AI;
 using GeometryFriends.AI.Interfaces;
 using GeometryFriends.AI.Communication;
 using GeometryFriends.AI.Perceptions.Information;
+using GeometryFriends.Levels.Shared;
+using GeometryFriends.ScreenSystem;
 
 namespace GeometryFriendsAgents
 {
@@ -34,11 +36,19 @@ namespace GeometryFriendsAgents
         private GameInfo.AgentBehaviour agentBehaviour;
         private bool agentAdaptive;
 
-        //Messages
+        //Logs and Screen Capture
         private List<AgentMessage> messages;
+        private Logger logger;
+        private GameInfo.CooperationStatus cooperationStatus;
+        private String collectiblesLeft = "";
+        private ScreenRecorder recorder;
+        private bool startRecording = true;       
 
         // Auxiliary Variables
         private Moves currentAction;
+        private Moves currentActionRect;
+        float prevRectX;
+        float prevHeight;
         private Graph.Move? nextMove;
         private DateTime lastMoveTime;
         private int targetPointX_InAir;
@@ -64,6 +74,8 @@ namespace GeometryFriendsAgents
             timerAdaptive = 0;
             timerAdaptiveCollectible = 0;
             currentAction = Moves.NO_ACTION;
+            currentActionRect = Moves.NO_ACTION;
+            cooperationStatus = GameInfo.CooperationStatus.NOT_COOPERATING;
             agentBehaviour = GameInfo.AgentBehaviour.FOLLOWER;
             agentAdaptive = false;
 
@@ -79,6 +91,9 @@ namespace GeometryFriendsAgents
         //implements abstract circle interface: used to setup the initial information so that the agent has basic knowledge about the level
         public override void Setup(CountInformation nI, RectangleRepresentation rI, CircleRepresentation cI, ObstacleRepresentation[] oI, ObstacleRepresentation[] rPI, ObstacleRepresentation[] cPI, CollectibleRepresentation[] colI, Rectangle area, double timeLimit)
         {
+            logger = new Logger();
+            recorder = new ScreenRecorder();
+
             // Create Level Array
             levelInfo.CreateLevelArray(colI, oI, rPI, cPI);
 
@@ -95,12 +110,30 @@ namespace GeometryFriendsAgents
             // Initial Information
             circleInfo = cI;
             rectangleInfo = rI;
+            prevRectX = rectangleInfo.X;
+            prevHeight = rectangleInfo.Height;
             targetPointX_InAir = (int)circleInfo.X;
             previousCollectiblesLen = levelInfo.collectibles.Length;
 
+            LogsCollectibles();
+
+            logger.Log("Setup", agentBehaviour.ToString(), cooperationStatus.ToString(), currentAction.ToString(), currentActionRect.ToString(), cI.X, cI.Y, rI.X, rI.Y, collectiblesLeft);
+
             // Set level bounds
             ComputeLevelBounds();
+        }
 
+        private void LogsCollectibles()
+        {
+            collectiblesLeft = "[";
+            bool collectibleFirst = true;
+            foreach (CollectibleRepresentation c in levelInfo.collectibles)
+            {
+                string extra = collectibleFirst ? "" : ", ";
+                collectiblesLeft += extra + "(" + c.X + ", " + c.Y + ")";
+                collectibleFirst = false;
+            }
+            collectiblesLeft += "]";
         }
 
         //implements abstract circle interface: registers updates from the agent's sensors that it is up to date with the latest environment information
@@ -322,7 +355,6 @@ namespace GeometryFriendsAgents
 
                 if (nextMove.HasValue)
                 {
-
                     if (flagStepCollectible == 2) //if circle is in different platform getting target collectible
                     {
 
@@ -456,8 +488,6 @@ namespace GeometryFriendsAgents
                     currentAction = actionSelector.GetCurrentAction(circleInfo, (int)circleInfo.X, 0, false);
                 }              
             }
-
-            
         }
 
         /*Agent Behaviour: Starts as leader but adapts to human behaviour*/
@@ -514,6 +544,7 @@ namespace GeometryFriendsAgents
 
             if ((DateTime.Now - lastMoveTime).TotalMilliseconds >= 20)
             {
+
                 if (!agentAdaptive)
                 {
                     if (agentBehaviour == GameInfo.AgentBehaviour.LEADER)
@@ -530,16 +561,76 @@ namespace GeometryFriendsAgents
                     Adaptive();
                 }
 
+                if (currentPlatform.HasValue)
+                {
+                    if (startRecording && !circleInfo.GamePaused)
+                    {
+                        startRecording = false;
+                        recorder.Start();
+                    }
+
+                    else
+                    {
+                        if (levelInfo.collectibles.Length > 0 && !circleInfo.GamePaused)
+                        {
+                            ActionRectangle();
+                        }
+                        else
+                        {
+                            recorder.levelEnd = true;
+                            recorder.StopThread();
+                            startRecording = true;
+                        }
+                        
+                        logger.Log("Playing", agentBehaviour.ToString(), cooperationStatus.ToString(), currentAction.ToString(), currentActionRect.ToString(), circleInfo.X, circleInfo.Y, rectangleInfo.X, rectangleInfo.Y, collectiblesLeft);
+
+                    }
+                }
+
+
                 lastMoveTime = DateTime.Now;
 
                 return;
             }
+
+        }
+
+        private void ActionRectangle()
+        {
+            currentActionRect = Moves.NO_ACTION;
+            float currRectX = rectangleInfo.X;
+            float currHeight = rectangleInfo.Height;
+            float compareVar = 0.05f;
+            
+            if (currRectX - prevRectX > compareVar)
+            {
+                currentActionRect = Moves.MOVE_RIGHT;
+            }
+            else if (currRectX - prevRectX < -compareVar)
+            {
+                currentActionRect = Moves.MOVE_LEFT;
+            }
+
+            if (currHeight < prevHeight)
+            {
+                currentActionRect = Moves.MORPH_DOWN;
+            }
+            else if (currHeight > prevHeight)
+            {
+                currentActionRect = Moves.MORPH_UP;
+            }
+            prevRectX = currRectX;
+            prevHeight = currHeight;
+
         }
 
         private bool IsGetCollectible() //Check if caught collectible
         {
             int currentCollectiblesLen = levelInfo.collectibles.Length;
-
+            if (previousCollectiblesLen != currentCollectiblesLen)
+            {
+                LogsCollectibles();
+            }
             if (currentCollectiblesLen > 0)
             {
                 int collectibleToGet = GetCollectibleToGet();
@@ -548,7 +639,7 @@ namespace GeometryFriendsAgents
                     return false;
                 }
                 else //Deal with cases where caught collectible was not necessarily the collectible to get (just in case)
-                {
+                {                  
                     bool diffCollectible = false;
                     foreach (CollectibleRepresentation c in levelInfo.collectibles)
                     {
@@ -700,12 +791,7 @@ namespace GeometryFriendsAgents
                  levelInfo.GetObtainedCollectibles(collectibleToGet), levelInfo.initialCollectibles);
         }
 
-        //implements abstract circle interface: signals the agent the end of the current level
-        public override void EndGame(int collectiblesCaught, int timeElapsed)
-        {
-            Console.WriteLine("CIRCLE - Collectibles caught = {0}, Time elapsed - {1}", collectiblesCaught, timeElapsed);
-        }
-
+       
         public override List<GeometryFriends.AI.Communication.AgentMessage> GetAgentMessages()
         {
             List<AgentMessage> toSent = new List<AgentMessage>(messages);
@@ -745,9 +831,11 @@ namespace GeometryFriendsAgents
                 (circleInfo.X <= rectangleInfo.X + (rectangleWidth / 2)) &&
                 Math.Abs(rectangleInfo.Y - (rectangleInfo.Height / 2) - GameInfo.CIRCLE_RADIUS - circleInfo.Y) <= 8.0f)
             {
+                cooperationStatus = GameInfo.CooperationStatus.RIDING;
                 return true;
             }
 
+            cooperationStatus = GameInfo.CooperationStatus.NOT_COOPERATING;
             return false;
 
         }

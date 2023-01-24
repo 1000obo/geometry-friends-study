@@ -12,6 +12,8 @@
     <AssemblyName>WIP</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,6 +50,8 @@
   <ItemGroup>
     <Compile Include="ActionSelector.cs" />
     <Compile Include="CircleAgent.cs" />
+    <Compile Include="ScreenRecorder.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="GraphCircle.cs" />
     <Compile Include="GraphRectangle.cs" />
     <Compile Include="GameInfo.cs" />

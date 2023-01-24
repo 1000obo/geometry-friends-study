@@ -130,17 +130,5 @@ namespace GeometryFriendsAgents
             return matrix;
         }
 
-        public static void WriteLog(string level, string agent)
-        {
-            string path = Path.Combine(Directory.GetCurrentDirectory(), "Logs");
-            Console.WriteLine(path);
-            /*string filePath = path + level + "_" + agent + ".csv";
-            // Write the values to the CSV file
-            using (StreamWriter sw = new StreamWriter(filePath, true))
-            {
-                sw.WriteLine($"{currentTime},{x},{y}");
-            }*/
-
-        }
     }
 }
