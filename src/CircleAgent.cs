@@ -373,7 +373,7 @@ namespace GeometryFriendsAgents
                         return;
                     }
                     //circle should wait for rectangle to "stop" or be in a path where its possible to get collectibles before moving - this works like a signal to move
-                    if ((Math.Abs(rectangleInfo.VelocityX) <= GameInfo.MIN_VELOCITYX && rectangleInfo.Y > levelInfo.initialCollectibles[collectibleToGet].Y)) 
+                    if ((rectangleInfo.Y > levelInfo.initialCollectibles[collectibleToGet].Y)) 
                     {
                         if (circleInfo.Y <= levelInfo.initialCollectibles[collectibleToGet].Y || (!cooperating && rectangleInfo.Y > circleInfo.Y && rectangleInfo.Y - (rectangleInfo.Height / 2) - GameInfo.CIRCLE_RADIUS >= circleInfo.Y))
                         {//circle is on top of target collectible; or is not riding rectangle and is higher than the rectangle more than a certain threshold - usual actions
