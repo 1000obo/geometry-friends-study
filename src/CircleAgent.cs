@@ -8,8 +8,6 @@ using GeometryFriends.AI;
 using GeometryFriends.AI.Interfaces;
 using GeometryFriends.AI.Communication;
 using GeometryFriends.AI.Perceptions.Information;
-using GeometryFriends.Levels.Shared;
-using GeometryFriends.ScreenSystem;
 
 namespace GeometryFriendsAgents
 {
@@ -563,7 +561,7 @@ namespace GeometryFriendsAgents
 
                 if (currentPlatform.HasValue)
                 {
-                    if (startRecording && !circleInfo.GamePaused)
+                    if (startRecording && !circleInfo.GamePaused && levelInfo.collectibles.Length != 0)
                     {
                         startRecording = false;
                         recorder.Start();
@@ -577,7 +575,6 @@ namespace GeometryFriendsAgents
                         }
                         else
                         {
-                            recorder.levelEnd = true;
                             recorder.StopThread();
                             startRecording = true;
                         }
