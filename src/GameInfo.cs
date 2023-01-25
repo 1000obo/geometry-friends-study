@@ -30,7 +30,7 @@
         public const int LEVEL_WALL_WIDTH = 40;
 
         public const int TIMER_WAITING_FOLLOWER = 100; //about 2-3 seconds
-        public const int TIMER_WAITING_LEADER = 150; //about 3 seconds
+        public const int TIMER_WAITING_LEADER = 100; //about 2-3 seconds
 
 
         public const string IST_CIRCLE_PLAYING = "IST Circle Playing";
