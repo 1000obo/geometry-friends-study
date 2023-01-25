@@ -182,7 +182,7 @@ namespace GeometryFriendsAgents
                             int movePointX = (int)levelInfo.initialCollectibles[collectibleToGet].X; //circle moves to target collectible position
                             bool rightMove = (movePointX >= circleInfo.X) ? true : false;
 
-                            int possibleObstacle = FindObstacleInTheWay(movePointX, rightMove); //obstacle is in the circle's way to the target collectible
+                            int possibleObstacle = FindObstacleInTheWay(movePointX, rightMove, (int) levelInfo.initialCollectibles[collectibleToGet].Y); //obstacle is in the circle's way to the target collectible
 
                             if (possibleObstacle != -1)
                             {
@@ -327,7 +327,8 @@ namespace GeometryFriendsAgents
 
                 if (nextMove.HasValue)
                 {
-                    if (flagStepCollectible == 2) //if circle is in different platform getting target collectible
+
+                    if (flagStepCollectible == 2 && circleInfo.Y < rectangleInfo.Y && Math.Abs(circleInfo.Y - rectangleInfo.Y) > GameInfo.MIN_DIST_RECTANGLEY) //if circle is in different platform getting target collectible
                     {
 
                         bool reachedGoal = actionSelector.IsGoal(circleInfo, (int) levelInfo.initialCollectibles[collectibleToGet].X, 0, true);
@@ -347,6 +348,7 @@ namespace GeometryFriendsAgents
                     //circle should wait for rectangle to be in a path where its possible to get collectibles before moving 
                     if (rectangleInfo.Y > levelInfo.initialCollectibles[collectibleToGet].Y) 
                     {
+
                         if (circleInfo.Y <= levelInfo.initialCollectibles[collectibleToGet].Y || (!cooperating && rectangleInfo.Y > circleInfo.Y && rectangleInfo.Y - (rectangleInfo.Height / 2) - GameInfo.CIRCLE_RADIUS >= circleInfo.Y))
                         {//circle is on top of target collectible; or is not riding rectangle and is higher than the rectangle more than a certain threshold - usual actions
                             currentAction = actionSelector.GetCurrentAction(circleInfo, nextMove.Value.movePoint.x, nextMove.Value.velocityX, nextMove.Value.rightMove);                  
@@ -840,14 +842,14 @@ namespace GeometryFriendsAgents
             return false;
         }
 
-        private int FindObstacleInTheWay(int movePointX, bool rightMove)
+        private int FindObstacleInTheWay(int movePointX, bool rightMove, int currCollectibleY)
         {
             foreach (ObstacleRepresentation obs in levelInfo.blackObstacles)
             {
                 int fakeMovePoint;
                 float rectangleWidth;
-                if (!rightMove) { fakeMovePoint = (int)(obs.X + obs.Width/2 + circleInfo.Radius); }
-                else { fakeMovePoint = (int)(obs.X - obs.Width/2 - circleInfo.Radius); }
+                if (!rightMove) { fakeMovePoint = (int)(obs.X + obs.Width/2 + circleInfo.Radius * 1.5); }
+                else { fakeMovePoint = (int)(obs.X - obs.Width/2 - circleInfo.Radius * 1.5); }
                 if (IsRectangleInTheWay(fakeMovePoint, rightMove))
                 {
                     rectangleWidth = GameInfo.RECTANGLE_AREA / (int)rectangleInfo.Height;
@@ -857,24 +859,25 @@ namespace GeometryFriendsAgents
                     rectangleWidth = 0;
                 }
 
-                if (circleInfo.Y - circleInfo.Radius <= obs.Y + (obs.Height / 2) &&
-                circleInfo.Y >= obs.Y - (obs.Height / 2))
+          
+                if (circleInfo.Y >= obs.Y - (obs.Height / 2) && obs.Y - (obs.Height / 2) >= currCollectibleY)
                 {
                     if (!rightMove &&
-                        circleInfo.X >= obs.X && movePointX <= obs.X + obs.Width &&
+                        circleInfo.X >= obs.X && movePointX <= obs.X + obs.Width && movePointX >= obs.X - obs.Width &&
                         circleInfo.X <= movePointX + obs.X + obs.Width + rectangleWidth + GameInfo.CIRCLE_RADIUS)
                     {
                         return fakeMovePoint;
-                    }                 
+                    }
 
                     if (rightMove &&
-                        circleInfo.X <= obs.X && movePointX >= obs.X - obs.Width &&
+                        circleInfo.X <= obs.X && movePointX >= obs.X - obs.Width && movePointX <= obs.X + obs.Width &&
                         circleInfo.X >= movePointX - obs.X - obs.Width - rectangleWidth - GameInfo.CIRCLE_RADIUS)
                     {
                         return fakeMovePoint;
                     }
 
                 }
+
 
             }
 
