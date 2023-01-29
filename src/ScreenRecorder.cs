@@ -75,15 +75,18 @@ namespace GeometryFriendsAgents
         private void StartThread()
         {
             float scalingFactor = getScalingFactor();
-            float screenWidth = Screen.PrimaryScreen.Bounds.Width * scalingFactor;
-            float screenHeight = Screen.PrimaryScreen.Bounds.Height * scalingFactor;
+            Screen s = Screen.AllScreens[Screen.AllScreens.Length-1];
+          
+            float screenWidth = s.Bounds.Width * scalingFactor;
+            float screenHeight = s.Bounds.Height * scalingFactor;
+
             int c = 0;
 
             while (!levelEnd) //while the level is not paused or it did not end capture bitmaps
             {
                 Bitmap bitmap = new Bitmap((int) screenWidth, (int) screenHeight); //crop
                 Graphics graphics = Graphics.FromImage(bitmap);
-                graphics.CopyFromScreen(0, 0, 0, 0, new System.Drawing.Size((int) screenWidth, (int) screenHeight));
+                graphics.CopyFromScreen(s.WorkingArea.X, s.WorkingArea.Y, 0, 0, new System.Drawing.Size((int) screenWidth, (int) screenHeight));
                 SaveBitmap(bitmap, c == 0);
                 c += 1;
                 Thread.Sleep(1000/fps);
