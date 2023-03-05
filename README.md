@@ -12,7 +12,7 @@ The three conditions of the study are:
 For all conditions, the agent will play as the circle character of the game, while the human will play as the rectangle.
 
 ## Form
-Participants will fill this form: https://form.jotform.com/230368783384062
+Participants will fill this form: https://form.jotform.com/230637216685359
 ## Downloading the Project
 To download the project, simply clone the repository or download the project ZIP file.
 
