@@ -47,6 +47,7 @@ namespace GeometryFriendsAgents
             SaveParameters();
             levelEnd = false;
             t = new Thread(new ThreadStart(StartThread));
+            t.IsBackground = true;
             t.Start();         
         }
 
