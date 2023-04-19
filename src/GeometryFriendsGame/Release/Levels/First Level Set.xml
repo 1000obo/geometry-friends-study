@@ -22,6 +22,7 @@
     <OrangeElevators />
     <TimeLimit value="120" />
     <HighScores>
+      <HighScore name="IST Circle&amp;IST Rectangle" value="33" />
       <HighScore name="IST Circle&amp;IST Rectangle" value="38" />
       <HighScore name="IST Circle&amp;IST Rectangle" value="39" />
       <HighScore name="IST Circle&amp;IST Rectangle" value="51" />

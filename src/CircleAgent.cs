@@ -71,8 +71,8 @@ namespace GeometryFriendsAgents
             currentAction = Moves.NO_ACTION;
             currentActionRect = Moves.NO_ACTION;
             cooperationStatus = GameInfo.CooperationStatus.NOT_COOPERATING;
-            agentBehaviour = GameInfo.AgentBehaviour.LEADER; //CHANGE HERE: FOLLOWER OR LEADER
-            agentAdaptive = true; //CHANGE HERE: ADAPTIVE CAN BE TRUE OR FALSE
+            agentBehaviour = GameInfo.AgentBehaviour.FOLLOWER; //CHANGE HERE: FOLLOWER OR LEADER
+            agentAdaptive = false; //CHANGE HERE: ADAPTIVE CAN BE TRUE OR FALSE
 
             graph = new GraphCircle();
             subgoalAStar = new SubgoalAStar();
