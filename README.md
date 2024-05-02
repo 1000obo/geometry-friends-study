@@ -1,18 +1,45 @@
-# Geometry Friends Study
+# When Should I Lead or Follow? Understanding Initiative Levels in Human-AI Collaborative Gameplay
 
-<i>What do humans think and expect of themselves, the AI partner, and the team in a human-AI collaboration setting?</i>
+## Abstract
+<i>Dynamics in Human-AI interaction should lead to more satisfying and engaging collaboration. Key open questions are how to design
+such interactions and the role personal goals and expectations play. We developed three AI partners of varying initiative (leader,
+follower, shifting) in a collaborative game called Geometry Friends. We conducted a within-subjects experiment with 60 participants
+to assess personal AI partner preference and performance satisfaction as well as perceived warmth and competence of AI partners.
+Results show that AI partners following human initiative are perceived as warmer and more collaborative. However, some participants
+preferred AI leaders for their independence and speed, despite being seen as less friendly. This suggests that assigning a leadership role
+to the AI partner may be suitable for time-sensitive scenarios. We identify design factors to consider when developing collaborative AI
+agents with varying levels of initiative to create more effective human-AI teams that consider context and individual preference.</i>
 
-To address this, we will conduct an in-person study using Geometry Friends, a two-player cooperative physics-based game in which subjects will play with agents presenting different levels of initiative (leader or follower) and willingness to shift initiave.
-
-The three conditions of the study are:
-- follower without shift - the agent will always follow the human player’s plan, never taking the initiative,
-- leader without shift - the agent will always act as a leader, following its own plan,
-- adaptive behaviour - the agent starts as a leader but if the human does not follow, it will give them initiative after a while.
-
+## Introduction
+This paper proposes using game environments like Geometry Friends to evaluate the interaction between humans
+and artificial agents. To better investigate the effects of AI initiative levels on human perception, we designed three
+different agent behaviours within a collaborative game:
+- a **leader agent** who acts according to its own plan expecting
+the human player to follow
+- a **follower agent** that aligns its actions to follow the human player’s plan
+- a **shifting agent** that changes its initiative depending on whether the human player follows its plan.
+  
 For all conditions, the agent will play as the circle character of the game, while the human will play as the rectangle.
 
+Given the level of initiative of the agent, including its willingness to shift initiative, we intend to answer four research
+questions:
+- **RQ1**: How does an agent’s initiative influence the perception of AI partners (agent focus e.g., perceived agent
+warmth and competence, social identification)?
+- **RQ2**: How does an agent’s initiative impact the perceived quality of collaboration (interaction focus e.g.,
+satisfaction with team and agent performance, objective performance)?
+- **RQ3**: How does an agent’s initiative impact the humans’ self-perception (user focus e.g., satisfaction with
+self-performance, perception of played role)?
+- **RQ4**: How does an agent’s initiative affect the overall team perception (team focus e.g., agent preference)?
+
+To address these questions, we conducted a study with a mixed-methods design, using the collaborative game Geometry
+Friends, involving 60 participants across three countries. We present our rationales for designing AI agents with varying
+levels of initiative, as well as an empirical evaluation of interacting with these agents to assess perceived AI partner
+warmth and competence, social identification with the team, satisfaction with performance (self, AI partner, and team),
+and AI partner personal preference based on different levels of initiative.
+
+
 ## Form
-Participants will fill this form: https://form.jotform.com/230637216685359
+Participants will fill out the form in the form folder.
 ## Downloading the Project
 To download the project, simply clone the repository or download the project ZIP file.
 
@@ -38,6 +65,6 @@ To run the game, follow these steps:
 ## Log Files
 You can find the generated log files of the experiment, including screen recordings and game logs, in the logs folder of the exe folder.
 
-## Other
-- Request for camera to record the studies
-- Request for participation prize, if necessary
+## More Information
+To cite this paper, please use:
+[TBD]
