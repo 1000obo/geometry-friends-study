@@ -67,4 +67,4 @@ You can find the generated log files of the experiment, including screen recordi
 
 ## More Information
 To cite this paper, please use:
-[TBD]
+Inês Lobo, Janin Koch, Jennifer Renoux, Inês Batina, and Rui Prada. 2024. When Should I Lead or Follow: Understanding Initiative Levels in Human-AI Collaborative Gameplay. In Proceedings of the 2024 ACM Designing Interactive Systems Conference (DIS '24). Association for Computing Machinery, New York, NY, USA, 2037–2056. https://doi.org/10.1145/3643834.3661583
